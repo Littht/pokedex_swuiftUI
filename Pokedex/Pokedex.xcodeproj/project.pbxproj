@@ -19,6 +19,8 @@
 		A1986D8A2A71BADE00E04F39 /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1986D892A71BADE00E04F39 /* PokedexUITests.swift */; };
 		A1986D8C2A71BADE00E04F39 /* PokedexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1986D8B2A71BADE00E04F39 /* PokedexUITestsLaunchTests.swift */; };
 		A19890712A74517700D714B8 /* PokemonSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19890702A74517700D714B8 /* PokemonSelected.swift */; };
+		A1AB01792A7AD5CF00E8AB12 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1AB01782A7AD5CF00E8AB12 /* Alamofire */; };
+		A1BBCC352A8BEFDF00B0CB5F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BBCC342A8BEFDF00B0CB5F /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 		A1986D892A71BADE00E04F39 /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		A1986D8B2A71BADE00E04F39 /* PokedexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A19890702A74517700D714B8 /* PokemonSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelected.swift; sourceTree = "<group>"; };
+		A1BBCC342A8BEFDF00B0CB5F /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1AB01792A7AD5CF00E8AB12 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +91,7 @@
 				A1986D702A71BAD900E04F39 /* ContentView.swift */,
 				A12A95FA2A77FAAA00ECBB9F /* PokemonImage.swift */,
 				A13A88C82A78511E00F75EEC /* PokemonDetails.swift */,
+				A1BBCC342A8BEFDF00B0CB5F /* ProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +179,9 @@
 			dependencies = (
 			);
 			name = Pokedex;
+			packageProductDependencies = (
+				A1AB01782A7AD5CF00E8AB12 /* Alamofire */,
+			);
 			productName = Pokedex;
 			productReference = A1986D6B2A71BAD900E04F39 /* Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -246,6 +254,9 @@
 				Base,
 			);
 			mainGroup = A1986D622A71BAD900E04F39;
+			packageReferences = (
+				A1AB01772A7AD5CF00E8AB12 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = A1986D6C2A71BAD900E04F39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -293,6 +304,7 @@
 				A13A88C92A78511E00F75EEC /* PokemonDetails.swift in Sources */,
 				A1986D6F2A71BAD900E04F39 /* PokedexApp.swift in Sources */,
 				A19890712A74517700D714B8 /* PokemonSelected.swift in Sources */,
+				A1BBCC352A8BEFDF00B0CB5F /* ProgressView.swift in Sources */,
 				A106DC0C2A794D4F009F28EC /* PokemonSelectedDetails.swift in Sources */,
 				A10705E52A71C0280066809E /* Pokemon.swift in Sources */,
 			);
@@ -615,6 +627,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1AB01772A7AD5CF00E8AB12 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1AB01782A7AD5CF00E8AB12 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1AB01772A7AD5CF00E8AB12 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A1986D632A71BAD900E04F39 /* Project object */;
 }

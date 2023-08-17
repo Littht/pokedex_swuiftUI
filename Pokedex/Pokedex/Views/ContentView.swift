@@ -21,18 +21,19 @@ struct ContentView: View {
                     HStack{
                         PokemonImage(imageLink: "\(pokemon.url)")
                             .padding(.trailing, 20)
-                        NavigationLink("\(pokemon.name)".capitalized,
-                                       destination: PokemonDetails(name: pokemon.name, url: pokemon.url))
+                        NavigationLink("\(pokemon.name.capitalized)") {
+                            PokemonDetails(pokemonUrl: "\(pokemon.url)",pokemonName:"\(pokemon.name)")
+                        }
                     }
-                }
-            }
-            .onAppear{
-                PokeApi().getData(){ pokemon in
-                    self.pokemon = pokemon
                 }
             }
             .searchable(text: $search)
             .navigationTitle("Pokedex")
+        }
+        .onAppear{
+            PokeApi().getAlamofireRequest() { pokemon in
+                self.pokemon = pokemon
+            }
         }
     }
 }

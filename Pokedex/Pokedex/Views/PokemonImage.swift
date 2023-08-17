@@ -10,32 +10,22 @@ import SwiftUI
 struct PokemonImage: View {
     
     var imageLink = ""
-    @State private var pokemonSprite = ""
+    @State private var pokemon: PokemonSelected? = nil
     
     var body: some View {
-        AsyncImage(url: URL(string: pokemonSprite))
+        AsyncImage(url: URL(string: pokemon?.sprites.front_default ?? ""))
             .frame(width: 75, height: 75)
             .onAppear{
-                    let loadedData = UserDefaults.standard.string(forKey: imageLink)
-    
-                    if loadedData == nil {
-                        getSprite(url: imageLink)
-                        UserDefaults.standard.set(imageLink, forKey: imageLink)
-                    }else{
-                        getSprite(url: loadedData!)
-                    }
-                getSprite(url: imageLink)
+                getData(url: imageLink)
             }
             .clipShape(Circle())
             .foregroundColor(.gray.opacity(0.6))
     }
     
-    func getSprite(url: String){
-        var sprite : String?
-        
-        PokemonSelectedApi().getData(url: url){ getSprite in
-            sprite = getSprite.front_default
-            self.pokemonSprite = sprite ?? "algo"
+    func getData(url: String) {
+        PokemonSelectedApi().getData(url: url){getSprite in
+            pokemon = getSprite
+            //self.pokemonSprite = getSprite.sprites.other.home.front_default
         }
     }
     
@@ -43,6 +33,6 @@ struct PokemonImage: View {
 
 struct PokemonImage_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonImage()
+        PokemonImage(imageLink: "https://pokeapi.co/api/v2/pokemon/4/")
     }
 }
