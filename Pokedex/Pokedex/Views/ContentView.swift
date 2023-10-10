@@ -23,11 +23,13 @@ struct ContentView: View {
                             .padding(.trailing, 20)
                         NavigationLink("\(pokemon.name.capitalized)") {
                             PokemonDetails(pokemonUrl: "\(pokemon.url)",pokemonName:"\(pokemon.name)")
+                                .padding(.top,-50)
                         }
                     }
                 }
             }
-            .searchable(text: $search)
+            .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always))
+            .disableAutocorrection(true)
             .navigationTitle("Pokedex")
         }
         .onAppear{

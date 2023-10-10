@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A106DC0C2A794D4F009F28EC /* PokemonSelectedDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106DC0B2A794D4F009F28EC /* PokemonSelectedDetails.swift */; };
 		A10705E52A71C0280066809E /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10705E42A71C0280066809E /* Pokemon.swift */; };
 		A12A95FB2A77FAAA00ECBB9F /* PokemonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A95FA2A77FAAA00ECBB9F /* PokemonImage.swift */; };
 		A13A88C92A78511E00F75EEC /* PokemonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13A88C82A78511E00F75EEC /* PokemonDetails.swift */; };
@@ -41,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A106DC0B2A794D4F009F28EC /* PokemonSelectedDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectedDetails.swift; sourceTree = "<group>"; };
 		A10705E42A71C0280066809E /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		A12A95FA2A77FAAA00ECBB9F /* PokemonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImage.swift; sourceTree = "<group>"; };
 		A13A88C82A78511E00F75EEC /* PokemonDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetails.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 			children = (
 				A10705E42A71C0280066809E /* Pokemon.swift */,
 				A19890702A74517700D714B8 /* PokemonSelected.swift */,
-				A106DC0B2A794D4F009F28EC /* PokemonSelectedDetails.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 				A1986D6F2A71BAD900E04F39 /* PokedexApp.swift in Sources */,
 				A19890712A74517700D714B8 /* PokemonSelected.swift in Sources */,
 				A1BBCC352A8BEFDF00B0CB5F /* ProgressView.swift in Sources */,
-				A106DC0C2A794D4F009F28EC /* PokemonSelectedDetails.swift in Sources */,
 				A10705E52A71C0280066809E /* Pokemon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

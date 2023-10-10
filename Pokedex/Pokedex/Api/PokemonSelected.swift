@@ -24,13 +24,21 @@ struct PokemonSelected: Codable {
 
 struct PokemonSprites: Codable {
     var front_default: String
-    var other : Other
+    var other: Other
     struct Other: Codable {
-        var home: Home
-        struct Home: Codable {
+        var officialArtwork: OfficialArtwork
+        struct OfficialArtwork: Codable {
             var front_default: String
         }
+        enum CodingKeys: String, CodingKey {
+            case officialArtwork = "official-artwork"
+        }
     }
+    
+//    enum CodingKeys: String, CodingKey {
+//        case front_default
+//        case other
+//    }
 }
 
 struct PokemonType: Codable {
@@ -55,16 +63,22 @@ struct BaseStats: Codable {
     }
 }
 
-struct PokemonSpeciesUrl: Codable{
+struct PokemonSpeciesUrl: Codable {
     var url:String
 }
 
-struct PokemonSpecies: Codable{
+struct PokemonSpecies: Codable {
     var base_happiness: Int
     var capture_rate: Int
+    var egg_groups: [EggGroup]
+    var evolution_chain: EvolutionUrl
 }
 
-enum TypeName: String, Codable{
+struct EggGroup: Codable {
+    var name:String
+}
+
+enum TypeName: String, Codable {
     case steel
     case water
     case bug
@@ -82,7 +96,7 @@ enum TypeName: String, Codable{
     case ground
     case dark
     case poison
-    case fliying
+    case flying
 }
 
 struct CustomColor {
@@ -103,7 +117,7 @@ struct CustomColor {
     static let ground = Color("ground")
     static let dark = Color("dark")
     static let poison = Color("poison")
-    static let fliying = Color("fliying")
+    static let flying = Color("fliying")
 }
 
 extension TypeName {
@@ -135,8 +149,8 @@ extension TypeName {
             return CustomColor.ground
         case .dark:
             return CustomColor.dark
-        case .fliying:
-            return CustomColor.fliying
+        case .flying:
+            return CustomColor.flying
         case .grass:
             return CustomColor.grass
         case .poison:
@@ -168,30 +182,107 @@ extension BaseStats {
     }
 }
 
-class PokemonSelectedApi{
+struct EvolutionUrl: Codable {
+    let url: String
+}
+
+struct EvolutionChain: Codable {
+    let chain: Chain
+    struct Chain: Codable {
+        let evolution_details: [EvolutionDetails]
+        let species: Species
+        let evolves_to: [EvolvesTo]
+    }
+}
+
+struct EvolvesTo: Codable {
+    let species: Species
+    let evolves_to: [EvolvesTo]
+    let evolution_details: [EvolutionDetails]
+}
+struct Species: Codable {
+    let name: String
+    let url: String
+}
+struct EvolutionDetails: Codable {
+    let gender: Int?
+    let held_item: HeldItem?
+    let item: Item?
+    let known_move: KnownMove?
+    let known_move_type: KnowMoveType?
+    let location: Location?
+    let min_affection: Int?
+    let min_happiness: Int?
+    let min_level: Int?
+    let needs_overworld_rain: Bool
+    let time_of_day: String
+    let trigger: Trigger
+}
+
+// evolution details strucs
+struct HeldItem: Codable {
+    let name: String
+    let url: String
+}
+
+struct Item: Codable{
+    let name: String
+    let url: String
+}
+
+struct KnownMove: Codable {
+    let name: String
+    let url: String
+}
+
+struct KnowMoveType: Codable {
+    let name: String
+    let url: String
+}
+
+struct Location: Codable {
+    let name: String
+    let url: String
+}
+
+struct Trigger: Codable {
+    let name: String
+    let url: String
+}
+
+
+class PokemonSelectedApi {
     
-    func getData(url:String, completion: @escaping ((PokemonSelected) -> ())){
-        AF.request(url).responseDecodable(of: PokemonSelected.self){ response in
-            switch response.result{
+    func getData(url:String, completion: @escaping ((PokemonSelected) -> ())) {
+        AF.request(url).responseDecodable(of: PokemonSelected.self) { response in
+            switch response.result {
             case let .success(pokemon):
-                DispatchQueue.main.async {
-                    completion(pokemon)
-                }
+                completion(pokemon)
             case let .failure(error):
                 print(error)
             }
         }
     }
-    func getDataSpecies(url:String, completion: @escaping((PokemonSpecies) -> ())){
-        AF.request(url).responseDecodable(of: PokemonSpecies.self){ response in
-            switch response.result{
+    
+    func getDataSpecies(url: String, completion: @escaping((PokemonSpecies) -> ())) {
+        AF.request(url).responseDecodable(of: PokemonSpecies.self) { response in
+            switch response.result {
             case let .success(pokemon):
-                DispatchQueue.main.sync {
-                    completion(pokemon)
-                }
+                completion(pokemon)
             case let .failure(error):
                 print(error)
             }
+        }
+    }
+    
+    func getEvolutionChain(url: String, completion: @escaping((EvolutionChain) -> ())) {
+        AF.request(url).responseDecodable(of: EvolutionChain.self) { response in
+            switch response.result {
+            case let .success(pokemonEvolution):
+                completion(pokemonEvolution)
+            case let .failure(error):
+                print(error)
+            }            
         }
     }
 }

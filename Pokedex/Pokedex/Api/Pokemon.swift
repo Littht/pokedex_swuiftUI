@@ -35,7 +35,7 @@ class PokeApi {
 //        }.resume()
 //    }
     func getAlamofireRequest(completion: @escaping (([PokemonStruct]) -> ())){
-        AF.request("https://pokeapi.co/api/v2/pokemon?limit=151").responseDecodable(of: Pokemons.self){ response in
+        AF.request("https://pokeapi.co/api/v2/pokemon?limit=490").responseDecodable(of: Pokemons.self){ response in
             switch response.result {
             case let .success(e):
                 DispatchQueue.main.async {
